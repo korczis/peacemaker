@@ -14,11 +14,10 @@
 #include <string>
 
 #include "Engine.h"
+#include "Capture.h"
 
 namespace pm
 {
-   class Capture;
-   
    class Device
    {
    public:
@@ -27,7 +26,16 @@ namespace pm
       
       typedef std::shared_ptr<Capture> CapturePtr;
       
-      CapturePtr CreateCapture() const;
+      inline CapturePtr CreateCapture() const
+      {
+         return CreateCapture<Capture>();
+      }
+      
+      template<typename T>
+      inline std::shared_ptr<T> CreateCapture() const
+      {
+         return std::make_shared<T>(this->getName().c_str());
+      }
       
       inline const std::string& getDescription() const
       {

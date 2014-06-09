@@ -23,8 +23,3 @@ Device::~Device()
 {
    
 }
-
-Device::CapturePtr Device::CreateCapture() const
-{
-   return std::make_shared<Capture>(this->getName().c_str());
-}
