@@ -32,6 +32,8 @@
 #include <set>
 #include <vector>
 
+#include "../Packets/Packets.h"
+
 namespace pm
 {
    class Capture;

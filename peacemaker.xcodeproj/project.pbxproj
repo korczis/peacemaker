@@ -40,6 +40,12 @@
 /* Begin PBXFileReference section */
 		F687F5FF194533F100FF0BDC /* libboost_signals.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_signals.dylib; path = ../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_signals.dylib; sourceTree = "<group>"; };
 		F687F605194542FB00FF0BDC /* libboost_log-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_log-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_log-mt.dylib"; sourceTree = "<group>"; };
+		F687F617194565A100FF0BDC /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Packet.h; path = Packets/Packet.h; sourceTree = "<group>"; };
+		F687F618194565A100FF0BDC /* PacketEthernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketEthernet.h; path = Packets/PacketEthernet.h; sourceTree = "<group>"; };
+		F687F619194565A100FF0BDC /* PacketIp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketIp.h; path = Packets/PacketIp.h; sourceTree = "<group>"; };
+		F687F61A194565A100FF0BDC /* Packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Packets.h; path = Packets/Packets.h; sourceTree = "<group>"; };
+		F687F61B194565A100FF0BDC /* PacketTcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketTcp.h; path = Packets/PacketTcp.h; sourceTree = "<group>"; };
+		F687F61C194565A100FF0BDC /* PacketUdp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketUdp.h; path = Packets/PacketUdp.h; sourceTree = "<group>"; };
 		F6A173851944DF8E002895C6 /* peacemaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = peacemaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A173881944DF8E002895C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F6A1738A1944DF8E002895C6 /* peacemaker.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = peacemaker.1; sourceTree = "<group>"; };
@@ -80,6 +86,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F687F6151945654900FF0BDC /* Packets */ = {
+			isa = PBXGroup;
+			children = (
+				F687F617194565A100FF0BDC /* Packet.h */,
+				F687F618194565A100FF0BDC /* PacketEthernet.h */,
+				F687F619194565A100FF0BDC /* PacketIp.h */,
+				F687F61A194565A100FF0BDC /* Packets.h */,
+				F687F61B194565A100FF0BDC /* PacketTcp.h */,
+				F687F61C194565A100FF0BDC /* PacketUdp.h */,
+			);
+			name = Packets;
+			sourceTree = "<group>";
+		};
 		F6A1737C1944DF8E002895C6 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +123,7 @@
 				F6A19DAE1944E8D7002895C6 /* Engine */,
 				F6A19DB51944F56E002895C6 /* Helpers */,
 				F6A19DB91944FD1D002895C6 /* Logger */,
+				F687F6151945654900FF0BDC /* Packets */,
 				F6A173881944DF8E002895C6 /* main.cpp */,
 				F6A1738A1944DF8E002895C6 /* peacemaker.1 */,
 			);

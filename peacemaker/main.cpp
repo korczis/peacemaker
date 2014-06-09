@@ -35,6 +35,7 @@
 #include "Engine/Device.h"
 #include "Engine/Engine.h"
 #include "Logger/Logger.h"
+#include "Packets/Packets.h"
 
 // boost includes
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -104,28 +105,34 @@ public:
       /* print timestamp and length of the packet */
       printf("%s.%.6d len:%d ", timestr, header->ts.tv_usec, header->len);
       
+      auto packet = (pm::Packet*)(data);
+      
+      auto eth = packet->GetData<pm::PacketEthernet>();
+      Logger.Log("eth->Src = " + eth->Src().ToString());
+      Logger.Log("eth->Dest = " + eth->Dest().ToString());
+      
       /* retireve the position of the ip header */
-      ih = (ip_header *) (data + 14); //length of ethernet header
+      auto ip = eth->GetData<pm::PacketIp>();
+      ih = (ip_header *)ip;
+      
+      printf("ip->Version = %d\n", ip->Version());
+      printf("ip->HeaderLength = %d\n", ip->HeaderLength());
+      printf("ip->Src = %s\n", ip->Src().ToString().c_str());
+      printf("ip->Dest = %s\n", ip->Dest().ToString().c_str());
       
       /* retireve the position of the udp header */
-      ip_len = (ih->ver_ihl & 0xf) * 4;
-      uh = (udp_header *) ((u_char*)ih + ip_len);
+      auto udp = ip->GetData<pm::PacketUdp>();
+      uh = (udp_header *)udp;
       
       /* convert from network byte order to host byte order */
       sport = ntohs(uh->sport);
       dport = ntohs(uh->dport);
       
       /* print ip addresses and udp ports */
-      printf("%d.%d.%d.%d:%d -> %d.%d.%d.%d:%d\n",
-			ih->saddr.byte1,
-			ih->saddr.byte2,
-			ih->saddr.byte3,
-			ih->saddr.byte4,
+      printf("%s:%d -> %s\n",
+      	ip->Src().ToString().c_str(),
 			sport,
-			ih->daddr.byte1,
-			ih->daddr.byte2,
-			ih->daddr.byte3,
-			ih->daddr.byte4,
+         ip->Dest().ToString().c_str(),
 			dport
 		);
    }
