@@ -53,7 +53,7 @@ public:
    }
    
    /* 4 bytes IP address */
-   typedef struct ip_address{
+   typedef struct ip_address {
       u_char byte1;
       u_char byte2;
       u_char byte3;
@@ -61,7 +61,7 @@ public:
    } ip_address;
    
    /* IPv4 header */
-   typedef struct ip_header{
+   typedef struct ip_header {
       u_char  ver_ihl;        // Version (4 bits) + Internet header length (4 bits)
       u_char  tos;            // Type of service
       u_short tlen;           // Total length
@@ -76,7 +76,7 @@ public:
    } ip_header;
    
    /* UDP header*/
-   typedef struct udp_header{
+   typedef struct udp_header {
       u_short sport;          // Source port
       u_short dport;          // Destination port
       u_short len;            // Datagram length

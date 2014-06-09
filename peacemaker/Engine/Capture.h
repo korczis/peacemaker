@@ -56,6 +56,11 @@ namespace pm
       typedef struct pcap* Handle;
       
       /**
+       * Inject raw packet data
+       */
+      bool Inject(unsigned char* data, int len);
+      
+      /**
        * @brief Processed buffered packets
        */
       virtual int Process(int count = -1);

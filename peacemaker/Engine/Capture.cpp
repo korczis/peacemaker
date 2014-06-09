@@ -73,6 +73,11 @@ Capture::~Capture()
    Logger::Instance().Log("Capture::Callback() - Got packet!");
 }
 
+bool Capture::Inject(unsigned char* data, int len)
+{
+   return pcap_sendpacket(mHandle, data, len) == 0;
+}
+
 /* virtual */ int Capture::Process(int count /* = -1 */)
 {
    return pcap_dispatch(mHandle, count, Handler, (unsigned char*)this);
