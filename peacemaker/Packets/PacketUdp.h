@@ -29,10 +29,38 @@
 
 #include "Packet.h"
 
+#include <arpa/inet.h>
+
 namespace pm
 {
    class PacketUdp : public Packet
    {
+   public:
+      inline unsigned short Sport() const
+      {
+         return ntohs(mSport);
+      }
+      
+      inline unsigned short Dport() const
+      {
+         return ntohs(mDport);
+      }
+      
+      inline unsigned short Length() const
+      {
+         return mLength;
+      }
+      
+      inline unsigned short Checksum() const
+      {
+         return mChecksum;
+      }
+      
+   private:
+      unsigned short mSport; // Source port
+      unsigned short mDport; // Destination port
+      unsigned short mLength; // Datagram length
+      unsigned short mChecksum; // Checksum
    }; // class PacketUdp
 }; /* namespace pm */
 

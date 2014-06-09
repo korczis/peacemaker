@@ -53,29 +53,6 @@ public:
    {
    }
    
-   /* 4 bytes IP address */
-   typedef struct ip_address {
-      u_char byte1;
-      u_char byte2;
-      u_char byte3;
-      u_char byte4;
-   } ip_address;
-   
-   /* IPv4 header */
-   typedef struct ip_header {
-      u_char  ver_ihl;        // Version (4 bits) + Internet header length (4 bits)
-      u_char  tos;            // Type of service
-      u_short tlen;           // Total length
-      u_short identification; // Identification
-      u_short flags_fo;       // Flags (3 bits) + Fragment offset (13 bits)
-      u_char  ttl;            // Time to live
-      u_char  proto;          // Protocol
-      u_short crc;            // Header checksum
-      ip_address  saddr;      // Source address
-      ip_address  daddr;      // Destination address
-      u_int   op_pad;         // Option + Padding
-   } ip_header;
-   
    /* UDP header*/
    typedef struct udp_header {
       u_short sport;          // Source port
@@ -87,54 +64,29 @@ public:
    
    virtual void Callback(const struct pcap_pkthdr *header, const unsigned char *data)
    {
-      // pm::Capture::Callback(header, data);
-      
-      struct tm *ltime;
-      char timestr[16];
-      ip_header *ih = NULL;
-      udp_header *uh = NULL;
-      u_int ip_len;
-      u_short sport,dport;
-      time_t local_tv_sec;
-      
-      /* convert the timestamp to readable format */
-      local_tv_sec = header->ts.tv_sec;
-      ltime=localtime(&local_tv_sec);
-      strftime( timestr, sizeof timestr, "%H:%M:%S", ltime);
-      
-      /* print timestamp and length of the packet */
-      printf("%s.%.6d len:%d ", timestr, header->ts.tv_usec, header->len);
-      
+      /* cast to generic packet */
       auto packet = (pm::Packet*)(data);
       
+      /* get the ethernet header*/
       auto eth = packet->GetData<pm::PacketEthernet>();
-      Logger.Log("eth->Src = " + eth->Src().ToString());
-      Logger.Log("eth->Dest = " + eth->Dest().ToString());
       
-      /* retireve the position of the ip header */
+      /* get the ip header */
       auto ip = eth->GetData<pm::PacketIp>();
-      ih = (ip_header *)ip;
       
-      printf("ip->Version = %d\n", ip->Version());
-      printf("ip->HeaderLength = %d\n", ip->HeaderLength());
-      printf("ip->Src = %s\n", ip->Src().ToString().c_str());
-      printf("ip->Dest = %s\n", ip->Dest().ToString().c_str());
-      
-      /* retireve the position of the udp header */
+      /* get the upd header */
       auto udp = ip->GetData<pm::PacketUdp>();
-      uh = (udp_header *)udp;
       
-      /* convert from network byte order to host byte order */
-      sport = ntohs(uh->sport);
-      dport = ntohs(uh->dport);
+      char buffer[1024];
       
       /* print ip addresses and udp ports */
-      printf("%s:%d -> %s\n",
+      snprintf(buffer, sizeof(buffer), "%s:%d -> %s:%d",
       	ip->Src().ToString().c_str(),
-			sport,
+			udp->Sport(),
          ip->Dest().ToString().c_str(),
-			dport
+			udp->Dport()
 		);
+      
+      Logger.Info(buffer);
    }
 };
 
