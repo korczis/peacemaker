@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F687F600194533F100FF0BDC /* libboost_signals.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F687F5FF194533F100FF0BDC /* libboost_signals.dylib */; };
+		F687F606194542FB00FF0BDC /* libboost_log-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F687F605194542FB00FF0BDC /* libboost_log-mt.dylib */; };
 		F6A173891944DF8E002895C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A173881944DF8E002895C6 /* main.cpp */; };
 		F6A1738B1944DF8E002895C6 /* peacemaker.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F6A1738A1944DF8E002895C6 /* peacemaker.1 */; };
 		F6A173931944DFC8002895C6 /* libpcap.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A173921944DFC8002895C6 /* libpcap.A.dylib */; };
@@ -21,7 +22,6 @@
 		F6A19DC1194514E9002895C6 /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */; };
 		F6A19DC319451574002895C6 /* libboost_date_time-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */; };
 		F6A19DC51945162B002895C6 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */; };
-		F6A19DC719451671002895C6 /* libboost_log-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC619451671002895C6 /* libboost_log-mt.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		F687F5FF194533F100FF0BDC /* libboost_signals.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_signals.dylib; path = ../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_signals.dylib; sourceTree = "<group>"; };
+		F687F605194542FB00FF0BDC /* libboost_log-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_log-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_log-mt.dylib"; sourceTree = "<group>"; };
 		F6A173851944DF8E002895C6 /* peacemaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = peacemaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A173881944DF8E002895C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F6A1738A1944DF8E002895C6 /* peacemaker.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = peacemaker.1; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
 		F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_date_time-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_date_time-mt.dylib"; sourceTree = "<group>"; };
 		F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_system-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_system-mt.dylib"; sourceTree = "<group>"; };
-		F6A19DC619451671002895C6 /* libboost_log-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_log-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_log-mt.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A19DC319451574002895C6 /* libboost_date_time-mt.dylib in Frameworks */,
+				F687F606194542FB00FF0BDC /* libboost_log-mt.dylib in Frameworks */,
 				F6A19DC51945162B002895C6 /* libboost_system-mt.dylib in Frameworks */,
-				F6A19DC719451671002895C6 /* libboost_log-mt.dylib in Frameworks */,
 				F6A173931944DFC8002895C6 /* libpcap.A.dylib in Frameworks */,
 				F6A19DA61944E3CC002895C6 /* libboost_program_options-mt.dylib in Frameworks */,
 				F687F600194533F100FF0BDC /* libboost_signals.dylib in Frameworks */,
@@ -113,8 +113,8 @@
 		F6A173911944DFB2002895C6 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				F687F605194542FB00FF0BDC /* libboost_log-mt.dylib */,
 				F687F5FF194533F100FF0BDC /* libboost_signals.dylib */,
-				F6A19DC619451671002895C6 /* libboost_log-mt.dylib */,
 				F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */,
 				F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */,
 				F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */,
@@ -305,6 +305,7 @@
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
+					"-DBOOST_ALL_DYN_LINK",
 					"-I/usr/local/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -320,6 +321,7 @@
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
+					"-DBOOST_ALL_DYN_LINK",
 					"-I/usr/local/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

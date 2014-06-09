@@ -31,14 +31,17 @@ namespace pm
       const Logger& Error(const char* msg) const;
       const Logger& Error(const std::string& msg) const;
       
+      const Logger& Fatal(const char* msg) const;
+      const Logger& Fatal(const std::string& msg) const;
+      
       const Logger& Info(const char* msg) const;
       const Logger& Info(const std::string& msg) const;
 
       const Logger& Log(const char* msg) const;
       const Logger& Log(const std::string& msg) const;
       
-      const Logger& Warn(const char* msg) const;
-      const Logger& Warn(const std::string& msg) const;      
+      const Logger& Warning(const char* msg) const;
+      const Logger& Warning(const std::string& msg) const;
    }; /* class Logger */
 }; /* namespace pm */
 

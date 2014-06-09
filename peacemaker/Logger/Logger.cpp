@@ -28,7 +28,8 @@ Logger::~Logger()
 
 const Logger& Logger::Debug(const char* msg) const
 {
-   return Log(msg);
+   BOOST_LOG_TRIVIAL(debug) << msg;
+   return *this;
 }
 
 const Logger& Logger::Debug(const std::string& msg) const
@@ -38,7 +39,8 @@ const Logger& Logger::Debug(const std::string& msg) const
 
 const Logger& Logger::Error(const char* msg) const
 {
-   return Log(msg);
+   BOOST_LOG_TRIVIAL(error) << msg;
+   return *this;
 }
 
 const Logger& Logger::Error(const std::string& msg) const
@@ -46,9 +48,21 @@ const Logger& Logger::Error(const std::string& msg) const
    return Error(msg.c_str());
 }
 
+const Logger& Logger::Fatal(const char* msg) const
+{
+   BOOST_LOG_TRIVIAL(fatal) << msg;
+   return *this;
+}
+
+const Logger& Logger::Fatal(const std::string& msg) const
+{
+   return Fatal(msg.c_str());
+}
+
 const Logger& Logger::Info(const char* msg) const
 {
-   return Log(msg);
+   BOOST_LOG_TRIVIAL(info) << msg;
+   return *this;
 }
 
 const Logger& Logger::Info(const std::string& msg) const
@@ -58,7 +72,7 @@ const Logger& Logger::Info(const std::string& msg) const
 
 const Logger& Logger::Log(const char* msg) const
 {
-   std::cout << msg << std::endl;
+   BOOST_LOG_TRIVIAL(info) << msg;
    return *this;
 }
 
@@ -67,12 +81,13 @@ const Logger& Logger::Log(const std::string& msg) const
    return Log(msg.c_str());
 }
 
-const Logger& Logger::Warn(const char* msg) const
+const Logger& Logger::Warning(const char* msg) const
 {
-   return Log(msg);
+   BOOST_LOG_TRIVIAL(warning) << msg;
+   return *this;
 }
 
-const Logger& Logger::Warn(const std::string& msg) const
+const Logger& Logger::Warning(const std::string& msg) const
 {
-   return Warn(msg.c_str());
+   return Warning(msg.c_str());
 }
