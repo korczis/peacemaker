@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F687F600194533F100FF0BDC /* libboost_signals.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F687F5FF194533F100FF0BDC /* libboost_signals.dylib */; };
 		F6A173891944DF8E002895C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A173881944DF8E002895C6 /* main.cpp */; };
 		F6A1738B1944DF8E002895C6 /* peacemaker.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F6A1738A1944DF8E002895C6 /* peacemaker.1 */; };
 		F6A173931944DFC8002895C6 /* libpcap.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A173921944DFC8002895C6 /* libpcap.A.dylib */; };
@@ -16,6 +17,11 @@
 		F6A19DB41944EAD6002895C6 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A19DB21944EAD6002895C6 /* Device.cpp */; };
 		F6A19DB81944F598002895C6 /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A19DB61944F598002895C6 /* Helpers.cpp */; };
 		F6A19DBC1944FD33002895C6 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A19DBA1944FD33002895C6 /* Logger.cpp */; };
+		F6A19DBF1945104D002895C6 /* Capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A19DBD1945104D002895C6 /* Capture.cpp */; };
+		F6A19DC1194514E9002895C6 /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */; };
+		F6A19DC319451574002895C6 /* libboost_date_time-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */; };
+		F6A19DC51945162B002895C6 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */; };
+		F6A19DC719451671002895C6 /* libboost_log-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A19DC619451671002895C6 /* libboost_log-mt.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F687F5FF194533F100FF0BDC /* libboost_signals.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_signals.dylib; path = ../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_signals.dylib; sourceTree = "<group>"; };
 		F6A173851944DF8E002895C6 /* peacemaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = peacemaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A173881944DF8E002895C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F6A1738A1944DF8E002895C6 /* peacemaker.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = peacemaker.1; sourceTree = "<group>"; };
@@ -47,6 +54,12 @@
 		F6A19DB71944F598002895C6 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helpers.h; path = Helpers/Helpers.h; sourceTree = "<group>"; };
 		F6A19DBA1944FD33002895C6 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = Logger/Logger.cpp; sourceTree = "<group>"; };
 		F6A19DBB1944FD33002895C6 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logger.h; path = Logger/Logger.h; sourceTree = "<group>"; };
+		F6A19DBD1945104D002895C6 /* Capture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Capture.cpp; path = Engine/Capture.cpp; sourceTree = "<group>"; };
+		F6A19DBE1945104D002895C6 /* Capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Capture.h; path = Engine/Capture.h; sourceTree = "<group>"; };
+		F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
+		F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_date_time-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_date_time-mt.dylib"; sourceTree = "<group>"; };
+		F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_system-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_system-mt.dylib"; sourceTree = "<group>"; };
+		F6A19DC619451671002895C6 /* libboost_log-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_log-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.55.0_1/lib/libboost_log-mt.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +67,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A19DC319451574002895C6 /* libboost_date_time-mt.dylib in Frameworks */,
+				F6A19DC51945162B002895C6 /* libboost_system-mt.dylib in Frameworks */,
+				F6A19DC719451671002895C6 /* libboost_log-mt.dylib in Frameworks */,
 				F6A173931944DFC8002895C6 /* libpcap.A.dylib in Frameworks */,
 				F6A19DA61944E3CC002895C6 /* libboost_program_options-mt.dylib in Frameworks */,
+				F687F600194533F100FF0BDC /* libboost_signals.dylib in Frameworks */,
+				F6A19DC1194514E9002895C6 /* libboost_thread-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +113,11 @@
 		F6A173911944DFB2002895C6 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				F687F5FF194533F100FF0BDC /* libboost_signals.dylib */,
+				F6A19DC619451671002895C6 /* libboost_log-mt.dylib */,
+				F6A19DC41945162B002895C6 /* libboost_system-mt.dylib */,
+				F6A19DC219451574002895C6 /* libboost_date_time-mt.dylib */,
+				F6A19DC0194514E9002895C6 /* libboost_thread-mt.dylib */,
 				F6A19DA51944E3CC002895C6 /* libboost_program_options-mt.dylib */,
 				F6A173921944DFC8002895C6 /* libpcap.A.dylib */,
 			);
@@ -113,6 +136,8 @@
 		F6A19DAE1944E8D7002895C6 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				F6A19DBD1945104D002895C6 /* Capture.cpp */,
+				F6A19DBE1945104D002895C6 /* Capture.h */,
 				F6A19DB21944EAD6002895C6 /* Device.cpp */,
 				F6A19DB31944EAD6002895C6 /* Device.h */,
 				F6A19DAF1944E91F002895C6 /* Engine.cpp */,
@@ -190,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A19DBF1945104D002895C6 /* Capture.cpp in Sources */,
 				F6A19DAD1944E50D002895C6 /* Application.cpp in Sources */,
 				F6A19DBC1944FD33002895C6 /* Logger.cpp in Sources */,
 				F6A19DB11944E91F002895C6 /* Engine.cpp in Sources */,

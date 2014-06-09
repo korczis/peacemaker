@@ -13,6 +13,9 @@ using namespace pm;
 // core c++ includes
 #include <iostream>
 
+// boost includes
+#include <boost/log/trivial.hpp>
+
 Logger::Logger()
 {
    

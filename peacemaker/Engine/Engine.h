@@ -10,18 +10,48 @@
 #define __peacemaker__Engine__
 
 // core c++ includes
+#include <memory>
 #include <vector>
 
 namespace pm
 {
+   class Device;
+   
    class Engine
    {
    public:
       Engine();
       virtual ~Engine();
       
-      // Engine device
-      class Device;
+      typedef std::shared_ptr<Device> DevicePtr;
+      typedef std::vector<Device> DeviceList;
+      typedef std::vector<DevicePtr> DevicePtrList;
+      
+      /**
+       * Get device by name
+       */
+      const DevicePtr GetDevice(const char* name = NULL) const;
+      
+      /**
+       * Get device by name
+       */
+      DevicePtr GetDevice(const char* name = NULL);
+      
+      /**
+       * @brief Get internal list of devices
+       */
+      inline DevicePtrList& GetDevices()
+      {
+         return mDevices;
+      }
+      
+      /**
+       * @brief Get internal list of devices
+       */
+      inline const DevicePtrList& GetDevices() const
+      {
+         return mDevices;
+      }
       
       /**
        * @brief Kill existing TCP connections
@@ -31,12 +61,17 @@ namespace pm
       /**
        * @brief List network devices
        */
-      static size_t ListDevices(std::vector<Device>& devices);
+      static size_t ListDevices(DevicePtrList& devices, bool include_any = true);
+      
+      virtual int Loop();
       
       /**
        * @brief Sniff
        */
       void Sniff(const std::string& device);
+      
+   private:
+      DevicePtrList mDevices;
    };
 }; /* namespace pm */
 

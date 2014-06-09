@@ -10,17 +10,24 @@
 #define __peacemaker__Engine_Device__
 
 // core c++ includes
+#include <memory>
 #include <string>
 
 #include "Engine.h"
 
 namespace pm
 {
-   class Engine::Device
+   class Capture;
+   
+   class Device
    {
    public:
       Device(const std::string& name = "", const std::string& description = "");
       virtual ~Device();
+      
+      typedef std::shared_ptr<Capture> CapturePtr;
+      
+      CapturePtr CreateCapture() const;
       
       inline const std::string& getDescription() const
       {

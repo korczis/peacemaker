@@ -42,8 +42,8 @@ int Application::Run()
    // Declare the supported options.
    po::options_description desc("Allowed options");
    desc.add_options()
-   	("help", "Show usage (this screen)")
-   	("list", "List available devices")
+   	("help,h", "Show usage (this screen)")
+   	("list,l", "List available devices")
    	("kill", "Kill all TCP connections")
    	("sniff", po::value<std::string>(), "Sniff in network traffic")
    ;
@@ -71,25 +71,20 @@ int Application::Run()
    if(vm.count("kill"))
    {
       mEngine->Kill();
-   	return EXIT_SUCCESS;
    }
 
    if(vm.count("list")) {
-      std::vector<Engine::Device> devices;
-      Engine::ListDevices(devices);
+      const Engine::DevicePtrList& devices = mEngine->GetDevices();
       for(auto device = devices.begin(); device != devices.end(); device++) {
-         std::cout << device->getName() << " (" << device->getDescription() << ")" << std::endl;
+         std::cout << (*device)->getName() << " (" << (*device)->getDescription() << ")" << std::endl;
       }
-      
-      return EXIT_SUCCESS;
    }
    
    if(vm.count("sniff"))
    {
       std::string device = vm["sniff"].as<std::string>();
       mEngine->Sniff(device);
-      return EXIT_SUCCESS;
    }
    
-	return EXIT_SUCCESS;
+	return mEngine->Loop();
 }

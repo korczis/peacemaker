@@ -8,13 +8,23 @@
 
 #include "Device.h"
 
+#include "Capture.h"
+
+#include "../Logger/Logger.h"
+
 using namespace pm;
 
-Engine::Device::Device(const std::string& name /* = "" */, const std::string& description /* = "" */) : mName(name), mDescription(description)
+Device::Device(const std::string& name /* = "" */, const std::string& description /* = "" */) : mName(name), mDescription(description)
 {
    
 }
 
-Engine::Device::~Device()
+Device::~Device()
 {
+   
+}
+
+Device::CapturePtr Device::CreateCapture() const
+{
+   return std::make_shared<Capture>(this->getName().c_str());
 }
