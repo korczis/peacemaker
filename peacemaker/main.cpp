@@ -38,18 +38,11 @@ int test()
    Logger.Log("Setting filter");
    capture->SetFilter("");
    
-   while(true)
-   {
-   	auto count = capture->Process();
-      if(count < 1)
-      {
-         boost::this_thread::sleep(boost::posix_time::milliseconds(10));
-      }
-      else
-      {
-         // std::cout << count << std::endl;
-      }
-   }
+   Logger.Log("Adding capture to engine");
+   engine->AddCapture(capture);
+   
+   Logger.Log("Running Engine::Loop()");
+   engine->Loop();
    
    Logger.Log("Deleting engine");
    delete engine;

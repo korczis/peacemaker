@@ -15,6 +15,7 @@
 
 namespace pm
 {
+   class Capture;
    class Device;
    
    class Engine
@@ -23,9 +24,19 @@ namespace pm
       Engine();
       virtual ~Engine();
       
+      typedef std::shared_ptr<Capture> CapturePtr;
+      typedef std::vector<Capture> CaptureList;
+      typedef std::vector<CapturePtr> CapturePtrList;
+      
       typedef std::shared_ptr<Device> DevicePtr;
       typedef std::vector<Device> DeviceList;
       typedef std::vector<DevicePtr> DevicePtrList;
+      
+      inline Engine& AddCapture(CapturePtr capture)
+      {
+      	mCaptures.push_back(capture);
+         return *this;
+      }
       
       /**
        * Get device by name
@@ -71,6 +82,7 @@ namespace pm
       void Sniff(const std::string& device);
       
    private:
+      CapturePtrList mCaptures;
       DevicePtrList mDevices;
    };
 }; /* namespace pm */

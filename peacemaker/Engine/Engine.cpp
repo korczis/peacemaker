@@ -96,6 +96,21 @@ void Engine::Kill()
 
 int Engine::Loop()
 {
+   int total = 0;
+   while(true)
+   {
+      int count = 0;
+      for(auto capture = mCaptures.begin(); capture != mCaptures.end(); capture++)
+      {
+         count += (*capture)->Process();
+      }
+      
+      if(count == 0)
+      {
+   		boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+      }
+   }
+   
    return 0;
 }
 

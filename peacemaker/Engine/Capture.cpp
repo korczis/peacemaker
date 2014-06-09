@@ -52,7 +52,7 @@ Capture::~Capture()
 
 /* virtual */ void Capture::Callback(const struct pcap_pkthdr *header, const unsigned char *data)
 {
-   // Logger::Instance().Log("Capture::Callback() - Got packet!");
+   Logger::Instance().Log("Capture::Callback() - Got packet!");
 }
 
 /* virtual */ int Capture::Process(int count /* = -1 */)
