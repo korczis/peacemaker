@@ -42,6 +42,19 @@
 
 auto Logger = pm::Logger::Instance();
 
+class TestCapture : public pm::Capture
+{
+public:
+   TestCapture(const char* device) : pm::Capture(device)
+   {
+   }
+   
+   virtual void Callback(const struct pcap_pkthdr *header, const unsigned char *data)
+   {
+      pm::Capture::Callback(header, data);
+   }
+};
+
 int test()
 {
    Logger.Log("Creating Engine");
@@ -51,7 +64,7 @@ int test()
    auto device = engine->GetDevice("en0");
    
    Logger.Log("Creating Capture");
-   auto capture = device->CreateCapture();
+   auto capture = device->CreateCapture<TestCapture>();
    
    Logger.Log("Setting filter");
    capture->SetFilter("");
@@ -61,6 +74,9 @@ int test()
    
    Logger.Log("Running Engine::Loop()");
    engine->Loop();
+   
+   Logger.Log("Removing capture from engine");
+   engine->RemoveCapture(capture);
    
    Logger.Log("Deleting engine");
    delete engine;
