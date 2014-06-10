@@ -53,15 +53,6 @@ public:
    {
    }
    
-   /* UDP header*/
-   typedef struct udp_header {
-      u_short sport;          // Source port
-      u_short dport;          // Destination port
-      u_short len;            // Datagram length
-      u_short crc;            // Checksum
-   } udp_header;
-
-   
    virtual void Callback(const struct pcap_pkthdr *header, const unsigned char *data)
    {
       /* cast to generic packet */
@@ -76,17 +67,47 @@ public:
       /* get the upd header */
       auto udp = ip->GetData<pm::PacketUdp>();
       
-      char buffer[1024];
-      
       /* print ip addresses and udp ports */
+      char buffer[1024];
       snprintf(buffer, sizeof(buffer), "%s:%d -> %s:%d",
       	ip->Src().ToString().c_str(),
 			udp->Sport(),
          ip->Dest().ToString().c_str(),
 			udp->Dport()
 		);
-      
       Logger.Info(buffer);
+      
+      auto dns = udp->GetData<pm::PacketDns>();
+      
+      snprintf(buffer, sizeof(buffer), "Questions: %d", ntohs(dns->Qcount));
+      Logger.Info(buffer);
+      
+      auto answers_count = ntohs(dns->Ancount);
+      snprintf(buffer, sizeof(buffer), "Answers: %d", answers_count);
+      Logger.Info(buffer);
+      
+      auto request = dns->GetRequest();
+      snprintf(buffer, sizeof(buffer), "Q: %s, Type: %d, Class: %d", request->GetName().c_str(), request->GetType(), request->GetClass());
+      Logger.Info(buffer);
+      
+      if(answers_count)
+      {
+         auto response_raw = ((unsigned char*)dns->GetResponse());
+         int response_offset = 0;
+         for(auto i = 0; i < 1 /* answers_count */; i++)
+         {
+            auto response = (pm::PacketDns::Response*)(response_raw + response_offset);
+            auto type = ((const unsigned char*)response)[0];
+            auto offset = ((const unsigned char*)response)[1];
+            auto response_request = ((pm::PacketDns::Request*)(((unsigned char*)dns)+offset));
+            auto name = response_request->GetName().c_str();
+            
+            snprintf(buffer, sizeof(buffer), "A: %s, Type: %02x, Offset: %02x, TTL: %d", name, type, offset, response->GetTtl());
+            Logger.Info(buffer);
+            
+            response_offset += sizeof(pm::PacketDns::Response) + response->GetLength();
+         }
+      }
    }
 };
 
@@ -102,7 +123,7 @@ int test()
    auto capture = device->CreateCapture<TestCapture>();
    
    Logger.Log("Setting filter");
-   capture->SetFilter("");
+   capture->SetFilter("udp port 53");
    
    Logger.Log("Adding capture to engine");
    engine->AddCapture(capture);

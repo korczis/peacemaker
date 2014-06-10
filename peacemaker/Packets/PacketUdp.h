@@ -56,6 +56,28 @@ namespace pm
          return mChecksum;
       }
       
+      inline unsigned char* GetData()
+      {
+      	return ((unsigned char*)this) + sizeof(*this);
+      }
+      
+      inline const unsigned char* GetData() const
+      {
+      	return ((const unsigned char*)this) + sizeof(*this);
+      }
+      
+      template<typename T>
+      inline T* GetData()
+      {
+      	return (T*)GetData();
+      }
+      
+      template<typename T>
+      inline const T* GetData() const
+      {
+      	return (const T*)GetData();
+      }
+      
    private:
       unsigned short mSport; // Source port
       unsigned short mDport; // Destination port

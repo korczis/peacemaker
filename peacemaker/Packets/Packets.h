@@ -28,6 +28,7 @@
 #define __peacemaker__Packets__
 
 #include "Packet.h"
+#include "PacketDns.h"
 #include "PacketEthernet.h"
 #include "PacketIp.h"
 #include "PacketTcp.h"

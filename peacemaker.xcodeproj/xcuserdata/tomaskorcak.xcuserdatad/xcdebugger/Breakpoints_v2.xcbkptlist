@@ -29,7 +29,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
-            landmarkName = "Engine::GetDevice(const char* name)"
+            landmarkName = "Engine::Engine()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

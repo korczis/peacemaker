@@ -46,6 +46,7 @@
 		F687F61A194565A100FF0BDC /* Packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Packets.h; path = Packets/Packets.h; sourceTree = "<group>"; };
 		F687F61B194565A100FF0BDC /* PacketTcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketTcp.h; path = Packets/PacketTcp.h; sourceTree = "<group>"; };
 		F687F61C194565A100FF0BDC /* PacketUdp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketUdp.h; path = Packets/PacketUdp.h; sourceTree = "<group>"; };
+		F687F61E1946B95000FF0BDC /* PacketDns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketDns.h; path = Packets/PacketDns.h; sourceTree = "<group>"; };
 		F6A173851944DF8E002895C6 /* peacemaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = peacemaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A173881944DF8E002895C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F6A1738A1944DF8E002895C6 /* peacemaker.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = peacemaker.1; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		F687F6151945654900FF0BDC /* Packets */ = {
 			isa = PBXGroup;
 			children = (
+				F687F61E1946B95000FF0BDC /* PacketDns.h */,
 				F687F617194565A100FF0BDC /* Packet.h */,
 				F687F618194565A100FF0BDC /* PacketEthernet.h */,
 				F687F619194565A100FF0BDC /* PacketIp.h */,

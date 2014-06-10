@@ -105,7 +105,7 @@ void Engine::Kill()
       devices.push_back(std::make_shared<Device>(device->name, description));
    }
    
-   /* We don't need any more the device list. Free it */
+   /* We don't need any more the device list. Free it. */
    pcap_freealldevs(allDevices);
    
    return devices.size() - orig_size;
@@ -121,6 +121,7 @@ int Engine::Loop()
       {
          count += (*capture)->Process();
       }
+      total += count;
       
       if(count == 0)
       {

@@ -49,6 +49,7 @@ Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mFilter(N
 {
    char errbuf[PCAP_ERRBUF_SIZE];
    mHandle = pcap_open_live(device, 65536, 1, 1000, errbuf);
+   pcap_set_promisc(mHandle, 1);
    
    mFilter = new bpf_program();
 }
