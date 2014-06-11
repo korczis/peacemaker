@@ -8,5 +8,6 @@ before_install:
   - n=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}')
   - sudo ./b2 -d+2 --ver--with=all -j $n install
   - sudo ldconfig
+  - cd ../
 install: mkdir build && cd build && cmake ../ && make
 
