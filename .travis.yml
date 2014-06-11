@@ -6,7 +6,7 @@ before_install:
   - cd boost_1_54_0/
   - ./bootstrap.sh --prefix=/usr/local
   - n=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}')
-  - ./b2 -d0 --with=all -j $n install
-  - ldconfig
+  - sudo ./b2 -d0 --with=all -j $n install
+  - sudo ldconfig
 install: mkdir build && cd build && cmake ../ && make
 
