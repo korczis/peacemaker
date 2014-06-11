@@ -1,3 +1,3 @@
-before_install: sudo apt-get install cmake boost-dev-all
+before_install: sudo apt-get install cmake libboost-dev-all
 install: mkdir build && cd build && cmake ../ && make
 
