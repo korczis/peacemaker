@@ -1,14 +1,10 @@
 language: cpp
 compiler:
-  - clang
   - gcc
 before_install: 
-  - sudo apt-get update -qq
-  - sudo apt-get install -y llvm clang cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
-  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq gcc-4.9; fi
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+  - sudo apt-get install -y g++-4.9 llvm clang cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev
   - wget -O boost_1_54_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.54.0/boost_1_54_0.tar.gz/download
   - tar -xzf boost_1_54_0.tar.gz
   - cd boost_1_54_0/
