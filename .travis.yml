@@ -5,15 +5,15 @@ before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
   - sudo apt-get dist-upgrade
-  - sudo apt-get install -y llvm clang cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev gcc-4.8
-  - wget http://ftp.us.debian.org/debian/pool/main/g/gcc-4.8/g++-4.8_4.8.3-2_amd64.deb
-  - sudo dpkg -i ./g++-4.8_4.8.3-2_amd64.deb
-  - sudo update-alternatives --remove-all gcc 
-  - sudo update-alternatives --remove-all g++
-  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
+  - sudo apt-get install -qq llvm llvm-gcc clang gcc-4.7 g++-4.7 cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev
+  - # sudo update-alternatives --remove-all gcc 
+  - # sudo update-alternatives --remove-all g++
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 20
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 20
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
+  - export CC=/usr/bin/clang
+  - export CXX=/usr/bin/clang++
   - wget -O boost_1_54_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.54.0/boost_1_54_0.tar.gz/download
   - tar -xzf boost_1_54_0.tar.gz
   - cd boost_1_54_0/
