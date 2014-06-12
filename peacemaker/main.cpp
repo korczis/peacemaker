@@ -111,20 +111,21 @@ public:
    }
 };
 
-int test()
+int test(int argc, const char** argv)
 {
    Logger.Log("Creating Engine");
    auto engine = new pm::Engine();
    
+   auto device_name = argc > 2 ? argv[2] : "en0";
+   
    Logger.Log("Getting device");
-   auto device = engine->GetDevice("en0");
+   auto device = engine->GetDevice(device_name);
    
    Logger.Log("Creating Capture");
    auto capture = device->CreateCapture<TestCapture>();
    
    Logger.Log("Setting filter");
-   capture->SetFilter("udp port 53");
-   
+   capture->SetFilter("udp port 53"); // udp port 53
    Logger.Log("Adding capture to engine");
    engine->AddCapture(capture);
    
@@ -143,9 +144,9 @@ int test()
 
 int main(const int argc, const char *argv[])
 {
-   if(argc == 2 && strcmp(argv[1], "-t") == 0)
+   if(argc >= 2 && strcmp(argv[1], "-t") == 0)
    {
-   	return test();
+   	return test(argc, argv);
    }
    
    // Create peacemaker application

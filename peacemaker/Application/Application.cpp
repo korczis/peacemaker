@@ -89,6 +89,7 @@ int Application::Run()
    if(vm.count("kill"))
    {
       mEngine->Kill();
+      return EXIT_SUCCESS;
    }
 
    if(vm.count("list")) {
@@ -96,6 +97,7 @@ int Application::Run()
       for(auto device = devices.begin(); device != devices.end(); device++) {
          std::cout << (*device)->getName() << " (" << (*device)->getDescription() << ")" << std::endl;
       }
+      return EXIT_SUCCESS;
    }
    
    if(vm.count("sniff"))

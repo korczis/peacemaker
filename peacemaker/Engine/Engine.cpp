@@ -86,7 +86,7 @@ void Engine::Kill()
    pcap_if_t *allDevices = NULL;
    char errbuf[PCAP_ERRBUF_SIZE];
    
-   if(include_any)
+   if(false && include_any)
    {
       devices.push_back(std::make_shared<Device>("any", "Pseudo device for access to all devices"));
    }

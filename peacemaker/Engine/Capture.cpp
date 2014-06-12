@@ -49,8 +49,24 @@ Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mFilter(N
 {
    char errbuf[PCAP_ERRBUF_SIZE];
    mHandle = pcap_open_live(device, 65536, 1, 1000, errbuf);
-   pcap_set_promisc(mHandle, 1);
+   /*
+   mHandle = pcap_create(device, errbuf);
    
+   pcap_set_snaplen(mHandle, 65536);
+   
+   if(pcap_set_promisc(mHandle, 1) == 0)
+   {
+   	Logger::Instance().Log("Promiscuous mode enabled");
+   }
+   
+   if(pcap_set_rfmon(mHandle, 1) == 0)
+   {
+      Logger::Instance().Log("Monitor mode enabled");
+   }
+   
+   pcap_activate(mHandle);
+   //*/
+    
    mFilter = new bpf_program();
 }
 
