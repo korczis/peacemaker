@@ -3,11 +3,9 @@ compiler:
   - gcc
 before_install: 
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -qq
-  - sudo apt-get dist-upgrade
-  - sudo apt-get install -qq llvm llvm-gcc clang gcc-4.7 g++-4.7 cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev
-  - # sudo update-alternatives --remove-all gcc 
-  - # sudo update-alternatives --remove-all g++
+  - sudo apt-get update -qq > /dev/null
+  - sudo apt-get dist-upgrade > /dev/null
+  - sudo apt-get install -qq llvm llvm-gcc clang gcc-4.7 g++-4.7 cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev > /dev/null
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 20
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 20
   - sudo update-alternatives --config gcc
@@ -19,7 +17,6 @@ before_install:
   - cd boost_1_54_0/
   - ./bootstrap.sh --prefix=/usr/local
   - n=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}')
-  - sudo ./b2 --ver--with=all -j $n install
+  - sudo ./b2 --ver--with=all -j $n install > /dev/null
   - sudo ldconfig
   - cd ../
-
