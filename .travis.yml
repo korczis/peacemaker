@@ -5,6 +5,14 @@ before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
   - sudo apt-get dist-upgrade
-  - sudo apt-get install -y llvm clang cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev libboost-all-dev
+  - sudo apt-get install -y llvm clang cmake libpcap-dev libgmp-dev libmpfr-dev libmpc-dev libc-dev libxml2-dev
+  - wget -O boost_1_54_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.54.0/boost_1_54_0.tar.gz/download
+  - tar -xzf boost_1_54_0.tar.gz
+  - cd boost_1_54_0/
+  - ./bootstrap.sh --prefix=/usr/local
+  - n=$(cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}')
+  - sudo ./b2 --ver--with=all -j $n install
+  - sudo ldconfig
+  - cd ../
 install: mkdir build && cd build && cmake ../ && make
 
