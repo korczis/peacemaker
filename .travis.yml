@@ -11,8 +11,8 @@ before_install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 20
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
-  - export CC=/usr/bin/clang
-  - export CXX=/usr/bin/clang++
+  - # export CC=/usr/bin/clang
+  - # export CXX=/usr/bin/clang++
   - wget -O boost_1_54_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.54.0/boost_1_54_0.tar.gz/download
   - tar -xzf boost_1_54_0.tar.gz
   - cd boost_1_54_0/
