@@ -2,4 +2,4 @@ all:
 	mkdir build && cd build && cmake ../ && make && cd ../
 
 test:
-	echo "Testing"
+	cd build && ls -la && cd .. /
