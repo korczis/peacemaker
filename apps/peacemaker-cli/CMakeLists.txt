@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
  
-project(cli)
+project(peacemaker-cli)
 
 file(GLOB CPP_FILES *.cpp)
 
