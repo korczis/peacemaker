@@ -25,3 +25,21 @@
 // THE SOFTWARE.
 
 #include "gtest/gtest.h"
+
+#include "Engine/Engine.h"
+
+// Tests factorial of 0.
+TEST(Engine, Engine) {
+	auto engine = new pm::Engine();
+	EXPECT_NE(engine, (pm::Engine*)NULL);
+}
+
+TEST(Engine, GetDevices) {
+	auto engine = new pm::Engine();
+	auto devices = engine->GetDevices();
+}
+
+TEST(Engine, ListDevices) {
+	auto devices = pm::Engine::DevicePtrList();
+	auto devices_count = pm::Engine::ListDevices(devices);
+}

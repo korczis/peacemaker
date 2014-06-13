@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
  
 project(peacemaker-test)
 
-file(GLOB CPP_FILES *.cpp ../../vendor/src/gtest/src/*.cc)
+file(GLOB CPP_FILES **/*.cpp ../../vendor/src/gtest/src/*.cc)
 
 add_definitions(
     -std=c++11
