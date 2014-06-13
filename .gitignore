@@ -1,6 +1,9 @@
 # XCode
 DerivedData/
 
+# Qt Creator
+peacemaker.*
+
 # Compiled Object files
 *.slo
 *.lo
