@@ -152,7 +152,16 @@ int main(const int argc, const char *argv[])
    // Create peacemaker application
 	auto app = new pm::Application(argc, argv);
    
-   auto res = app->Run();
+   int res = 0;
+   try
+   {
+       res = app->Run();
+   }
+   catch(const std::exception& e)
+   {
+       Logger.Fatal(e.what());
+       return EXIT_FAILURE;
+   }
    
    // Delete application
    delete app;
