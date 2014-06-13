@@ -7,4 +7,4 @@ clean:
 test:
 	echo "Testing"
 
-	cd build && ls -la apps bin lib && cd .. /
+	cd build && ls -la apps bin lib && cd .. / && echo "" && build/bin/peacemaker-test
