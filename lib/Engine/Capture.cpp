@@ -70,16 +70,15 @@ Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mDataLink
    mDataLinkType = pcap_datalink(mHandle);
    snprintf(buffer, sizeof(buffer), "Data Link Type %d", mDataLinkType);
    Logger::Instance().Log(buffer);
-
-   mFilter = new bpf_program();
 }
 
 Capture::~Capture()
 {
    if(mFilter)
    {
-   	delete mFilter;
-      mFilter = NULL;
+       pcap_freecode(mFilter);
+       mFilter = NULL;
+       mFilterString = "";
    }
    
    if(mHandle)
@@ -104,14 +103,42 @@ bool Capture::Inject(unsigned char* data, int len)
    return pcap_dispatch(mHandle, count, Handler, (unsigned char*)this);
 }
 
+// TODO: Use uniform way of handling errors and cleaning mFilter/mFilterString
 bool Capture::SetFilter(const char *filter, bool optimize, int netmask)
 {
    auto opt = optimize ? 1 : 0;
-   auto res = pcap_compile(mHandle, mFilter, filter, opt, (bpf_u_int32)netmask);
-   if(res != 0)
+
+   // Free previous filter if there was some
+   if(mFilter)
+   {
+       pcap_freecode(mFilter);
+       mFilter = NULL;
+       mFilterString = "";
+   }
+
+   mFilter = (bpf_program*)malloc(sizeof(bpf_program));
+
+   // Compile the filter into optimized representation
+   auto res = pcap_compile(mHandle, mFilter, filter, opt, (bpf_u_int32)netmask) == 0;
+   if(!res)
    {
       return false;
    }
    
-   return pcap_setfilter(mHandle, mFilter) == 0;
+   // Try to set filter for this handle a
+   res = pcap_setfilter(mHandle, mFilter) == 0;
+
+   // If setting failed free allocated stuff
+   if(!res)
+   {
+       pcap_freecode(mFilter);
+       mFilter = NULL;
+   }
+   else
+   {
+       // Finally set filter string
+       mFilterString = filter;
+   }
+
+   return res;
 }

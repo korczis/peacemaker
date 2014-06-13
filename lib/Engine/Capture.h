@@ -36,6 +36,9 @@ struct pcap_pkthdr;
 
 namespace pm
 {
+   /*
+    * @brief Wrapper of pcap_t
+    */
    class Capture
    {
       Capture();
@@ -80,9 +83,10 @@ namespace pm
       Handle mHandle;
       int mDataLinkType;
       
+      std::string mFilterString;
       bpf_program* mFilter;
       
    }; /* class Capture */
-}; /* namespace pm */
+} /* namespace pm */
 
 #endif /* defined(__peacemaker__Capture__) */
