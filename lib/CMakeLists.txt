@@ -5,7 +5,7 @@ project (peacemaker)
 set(Peacemaker_VERSION_MAJOR 0)
 set(Peacemaker_VERSION_MINOR 1)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "../cmake/modules/")
 
 set(${PROJECTNAME}_SOURCES
     Application/Application.cpp

@@ -2,7 +2,7 @@ all:
 	mkdir -p build && cd build && cmake .. && make && cd ../
 
 clean:
-	rm -rf build/CMakeFiles build/CMakeCache.txt
+	rm -rf build/CMakeFiles build/CMakeCache.txt build/apps build/lib
 
 test:
 	echo "Testing"
