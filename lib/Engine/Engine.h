@@ -66,7 +66,7 @@ namespace pm
        */
       inline Engine& AddCapture(CapturePtr capture)
       {
-      	mCaptures.insert(capture);
+  	     mCaptures.insert(capture);
          return *this;
       }
       
@@ -75,7 +75,7 @@ namespace pm
        */
       inline Engine& RemoveCapture(CapturePtr capture)
       {
-      	mCaptures.erase(capture);
+      	 mCaptures.erase(capture);
          return *this;
       }
       

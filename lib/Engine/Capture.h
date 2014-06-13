@@ -78,6 +78,7 @@ namespace pm
    private:
       const std::string mDevice;
       Handle mHandle;
+      int mDataLinkType;
       
       bpf_program* mFilter;
       

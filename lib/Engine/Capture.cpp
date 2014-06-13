@@ -45,10 +45,10 @@ namespace  {
    }
 };
 
-Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mFilter(NULL)
+Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mDataLinkType(0), mFilter(NULL)
 {
-   char errbuf[PCAP_ERRBUF_SIZE];
-   mHandle = pcap_open_live(device, 65536, 1, 1000, errbuf);
+   char buffer[PCAP_ERRBUF_SIZE];
+   mHandle = pcap_open_live(device, 65536, 1, 1000, buffer);
    /*
    mHandle = pcap_create(device, errbuf);
    
@@ -66,7 +66,11 @@ Capture::Capture(const char* device) : mDevice(device), mHandle(NULL), mFilter(N
    
    pcap_activate(mHandle);
    //*/
-    
+
+   mDataLinkType = pcap_datalink(mHandle);
+   snprintf(buffer, sizeof(buffer), "Data Link Type %d", mDataLinkType);
+   Logger::Instance().Log(buffer);
+
    mFilter = new bpf_program();
 }
 
