@@ -113,34 +113,37 @@ void Engine::Kill()
 
 int Engine::Loop()
 {
-   int total = 0;
-   while(true)
-   {
+     Logger::Instance().Log("Engine::Loop()");
+
+    int total = 0;
+    while(true)
+    {
       int count = 0;
       for(auto capture = mCaptures.begin(); capture != mCaptures.end(); capture++)
       {
          count += (*capture)->Process();
       }
       total += count;
-      
+
       if(count == 0)
       {
-   		boost::this_thread::sleep(boost::posix_time::milliseconds(10));
+        boost::this_thread::sleep(boost::posix_time::milliseconds(10));
       }
-   }
-   
-   return 0;
+    }
+
+    return 0;
 }
 
 void Engine::Sniff(const std::string& device)
 {
    Logger::Instance().Log("Engine::Sniff(\"" + device + "\")");
    
-   Capture res(device.c_str());
-   
-   auto i = 1e7;
-   while(--i)
-   {
-      boost::this_thread::sleep(boost::posix_time::microseconds(1));
-   }
+   auto capture = std::shared_ptr<Capture>(new Capture(device.c_str()));
+   this->AddCapture(capture);
+
+   // auto i = 1e3;
+   // while(--i)
+   // {
+   //    boost::this_thread::sleep(boost::posix_time::microseconds(1));
+   // }
 }

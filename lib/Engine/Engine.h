@@ -129,6 +129,6 @@ namespace pm
       CaptureSet mCaptures;
       DevicePtrList mDevices;
    };
-}; /* namespace pm */
+} /* namespace pm */
 
 #endif /* defined(__peacemaker__Engine__) */

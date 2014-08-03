@@ -144,28 +144,28 @@ int test(int argc, const char** argv)
 
 int main(const int argc, const char *argv[])
 {
-   if(argc >= 2 && strcmp(argv[1], "-t") == 0)
-   {
-   	return test(argc, argv);
-   }
-   
-   // Create peacemaker application
-	auto app = new pm::Application(argc, argv);
-   
-   int res = 0;
-   try
-   {
+    if(argc >= 2 && strcmp(argv[1], "-t") == 0)
+    {
+        return test(argc, argv);
+    }
+
+    // Create peacemaker application
+    auto app = new pm::Application(argc, argv);
+
+    int res = 0;
+    try
+    {
        res = app->Run();
-   }
-   catch(const std::exception& e)
-   {
+    }
+    catch(const std::exception& e)
+    {
        Logger.Fatal(e.what());
        return EXIT_FAILURE;
-   }
-   
-   // Delete application
-   delete app;
-   app = 0;
-   
-   return res;
+    }
+
+    // Delete application
+    delete app;
+    app = 0;
+
+    return res;
 }

@@ -83,7 +83,7 @@ int Application::Run()
    
    if (vm.count("help") || mArgc < 2) {
       std::cout << desc << "\n";
-      return 1;
+      return EXIT_FAILURE;
    }
 
    if(vm.count("kill"))
@@ -99,11 +99,17 @@ int Application::Run()
       }
       return EXIT_SUCCESS;
    }
-   
+
    if(vm.count("sniff"))
    {
       std::string device = vm["sniff"].as<std::string>();
       mEngine->Sniff(device);
+   }
+   else
+   {
+       std::cerr << "No sniffing device specified" << std::endl;
+       std::cout << desc << "\n";
+       return EXIT_FAILURE;
    }
    
 	return mEngine->Loop();

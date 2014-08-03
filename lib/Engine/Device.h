@@ -104,6 +104,6 @@ namespace pm
       std::string mDescription;
       std::string mName;
    };
-}; /* namespace pm */
+} /* namespace pm */
 
 #endif /* defined(__peacemaker__Engine_Device__) */
