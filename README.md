@@ -14,5 +14,3 @@ Make peace on network ...
 ## License
 
 MIT
-
-
